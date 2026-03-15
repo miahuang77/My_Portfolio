@@ -1,0 +1,352 @@
+/* win98.css */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'VT323', 'Courier New', monospace;
+  background-image: url('/assets/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.desktop-layout {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px 1fr 400px;
+}
+
+.desktop {
+  position: relative;
+}
+
+/* Win98 popup window */
+.win98-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+
+   min-width: 300px;
+  box-shadow: 2px 2px 0 #000;
+}
+.win98-titlebar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+  padding: 4px 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.win98-close-btn {
+  position: relative;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.win98-close-btn::before,
+.win98-close-btn::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: black;
+
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+.win98-close-btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.win98-close-btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.win98-close-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+.win98-content {
+  padding: 10px 24px;
+  height: calc(100% - 40px);
+  overflow-y: hidden;
+}
+
+/* sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 10px;
+}
+.sidebar-icon:hover {
+  background: rgba(255,255,255,0.2);
+  border: 1px dotted white;
+}
+.clickable {
+  cursor: pointer;
+}
+.clickable:hover {
+  opacity: 0.85;
+}
+.sidebar-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  width: 80px;
+}
+.sidebar-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+.sidebar-icon span {
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* awards pop-up*/
+.awards-content h2 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+.awards-section {
+  margin-bottom: 10px;
+}
+
+/*projects pop-up*/
+.second-large-window {
+  width: 700px;
+  height: 600px;
+}
+.job-line {
+  display: flex;
+  justify-content: space-between;
+}
+.project-window-content h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.project-window-content h3 {
+  margin-left: 8px;
+  margin-top: 10px;
+}
+.project-window-content ul {
+  margin-left: 8px;
+  margin-bottom: 5px;
+}
+.project-window-content p {
+  margin-left: 8px;
+  margin-bottom: 10px;
+}
+/* work experience pop-up */
+.third-large-window {
+  width: 600px;
+  height: 490px;
+}
+.work-window-content h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.work-window-content h3 {
+  margin-left: 8px;
+  margin-top: 10px;
+}
+.work-window-content ul {
+  margin-left: 8px;
+  margin-bottom: 5px;
+}
+.work-window-content p {
+  margin-left: 8px;
+  margin-bottom: 10px;
+}
+
+/* profile*/
+.profile-area {
+  position: relative;
+  width: 400px;
+  flex-shrink: 0;
+  margin-left: 10px;
+  display: inline-block;
+  align-self: start;
+}
+.profile-pic {
+  width: 100%;
+  display: block;
+}
+.profile-overlay-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  height: 60px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* profile popup */
+.large-window {
+  width: 700px;
+  height: 700px;
+}
+.profile-window-content {
+  padding: 3px;
+  font-family: 'VT323', monospace;
+  width: 100%;
+}
+
+.profile-window-content h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-photos-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  margin-bottom: 12px;
+  height: 200px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.profile-photos-scroll img {
+  height: 100%;
+  width: auto;
+  display: inline-block;
+}
+
+.profile-text-scroll {
+  overflow-y: auto;
+  height: 300px;
+  border: 0px solid;
+  background: white;
+  padding: 8px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+/* anime */
+.anime-area {
+  position: absolute;
+  left: 20px;
+  bottom: 00px;
+  width: 250px;
+}
+.anime-pic {
+  width: 100%;
+  display: block;
+}
+ .anime-overlay-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px; 
+  height: 220px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+/*anime pop-up*/
+.left-cornor-window {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+
+  width: 450px;
+  height: 320px;
+
+  transform: none;
+}
+.anime-window-content h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.anime-photos-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  margin-bottom: 12px;
+  height: 200px;
+  white-space: nowrap;
+  width: 100%;
+}
+.anime-photos-scroll img {
+  height: 200px;
+  width: auto;
+  max-width: none;
+}
+/* artist */
+.artist-area {
+  position: absolute;
+  left: 530px;
+  bottom: 5px;
+  width: 500px;
+}
+.artist-pic {
+  width: 100%;
+  display: block;
+}
+.artist-overlay-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px; 
+  height: 150px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* movie frame */
+.movie-frame {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  align-content: start;
+}
+
+.movie-card {
+  background: none;
+  border: 3px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 0;
+  cursor: pointer;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
