@@ -30,6 +30,42 @@ body {
   position: relative;
 }
 
+.cat-gif {
+  position: absolute;
+  top: 390px;
+  left: 40px;
+  width: 80px;
+  pointer-events: none;
+}
+.cattwo-gif {
+  position: fixed;
+  bottom: 220px;
+  right: 400px;
+  width: 100px;
+  pointer-events: none;
+}
+.hammy-gif {
+  position: fixed;
+  bottom: 230px;
+  right: 550px;
+  width: 80px;
+  pointer-events: none;
+}
+.seal-gif {
+  position: fixed;
+  bottom: 10px;
+  right: 920px;
+  width: 200px;
+  pointer-events: none;
+}
+.dog-gif {
+  position: fixed;
+  bottom: 220px;
+  right: 700px;
+  width: 150px;
+  pointer-events: none;
+}
+
 /* Win98 popup window */
 .win98-window {
   position: absolute;

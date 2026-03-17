@@ -8,6 +8,11 @@ import awardsIcon from '/assets/images/icon3.png'
 import profilePic from '/assets/images/profile.png'
 import animeImg from '/assets/images/anime.png'
 import artistsImg from '/assets/images/artists.png'
+import cat from '/assets/images/cat.gif'
+import cattwo from '/assets/images/ocat.gif'
+import hammy from '/assets/images/Hamster_gif.gif'
+import seal from '/assets/images/zeehond9.gif'
+import dog from '/assets/images/frogdog.gif'
 
 function Desktop({
   onOpenWork,
@@ -20,6 +25,11 @@ function Desktop({
 }) {
   return (
     <div className="desktop-layout">
+      <img src={cat} className="cat-gif" />
+      <img src={cattwo} className="cattwo-gif" />
+      <img src={hammy} className="hammy-gif" />
+      <img src={seal} className="seal-gif" />
+      <img src={dog} className="dog-gif" />
 
       {/* Iconbars on the left of screen */}
       <div className="sidebar">
