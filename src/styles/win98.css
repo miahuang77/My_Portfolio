@@ -278,10 +278,8 @@ body {
   position: absolute;
   left: 20px;
   bottom: 20px;
-
   width: 450px;
   height: 320px;
-
   transform: none;
 }
 .anime-window-content h2 {
@@ -289,28 +287,24 @@ body {
   text-align: center;
   margin-bottom: 10px;
 }
-.artists-photos-scroll {
-  max-width: 100%; 
-  width: 700px; 
-  height: 160px;
-  overflow-x: scroll;
+.anime-photos-scroll {
+  width: 100%;
+  height: 200px;
+  overflow-x: auto;
   overflow-y: hidden;
-
-  white-space: nowrap;
-
   border: 2px solid;
   border-color: #808080 #ffffff #ffffff #808080;
-
-  background: black;
+  background: none;
 }
 
-/* images */
-.artists-photos-scroll img {
-  height: 100%;
-  width: auto;
+/* image */
+.anime-photos-scroll img {
+  height: 100%;           /* fill container height */
+  width: auto;            /* keep original aspect ratio */
 
-  display: inline-block;    /* 🔥 critical */
+  display: block;
 }
+
 /* artist */
 .artist-area {
   position: absolute;
@@ -334,7 +328,6 @@ body {
   cursor: pointer;
 }
 /* artists pop-up */
-
 .artists-window-content h2 {
   text-align: center;
   margin-bottom: 10px;
@@ -347,30 +340,34 @@ body {
   list-style: none;
 
 }
-
 .artists-photos-scroll {
-  overflow-x: auto;     /* enables horizontal scroll */
+  max-width: 100%; 
+  width: 700px; 
+  height: 160px;
+  overflow-x: auto;
   overflow-y: hidden;
-
-  white-space: nowrap;  /* keeps images in one row */
-
+  white-space: nowrap;
   border: 2px solid;
   border-color: #808080 #ffffff #ffffff #808080;
-
-  margin: 10px 0;
-  height: 160px;
-
   background: black;
 }
-
-/* images inside */
+.artists-photos-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  margin: 10px 0;
+  height: 160px;
+  background: black;
+}
+/* images */
 .artists-photos-scroll img {
   height: 100%;
   width: auto;
 
-  display: inline-block;  /* makes them line up horizontally */
+  display: inline-block;
 }
-
 
 /* movie frame */
 .movie-frame {
@@ -462,8 +459,13 @@ body {
 @media (max-width: 1100px) {
   .profile-area {
     position: absolute;
-    z-index: 999;
+    z-index: 900;
     top: 10px;
     left: 140px;
   }
+
+  .large-window {
+      position: center;
+    z-index: 999;
+}
 }

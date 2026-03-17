@@ -32,10 +32,10 @@ function PersonalProfile() {
         <p>Codes (vide-coding for most of the time)</p>
         <br />
         <p>What she likes...</p>
-        <p>Cats, Dinosaurs, Marine creatures, Jazz, Soju, Travelling, Designing, Getting new plushies, Pho, Macha... and everything on this webpage!</p>
+        <p>Cats, Dinosaurs, Marine creatures, Jazz, Travelling, Designing, Getting new plushies, Pho, Macha... and everything on this webpage!</p>
         <br />
         <p>What she dislikes...</p>
-        <p>Constantly talking to humans, Birds, Going to lectures, Doing sports, Reptiles, Rainy day, Cold winter</p>
+        <p>Birds, Going to lectures, Doing sports, Reptiles, Rainy day, Cold winter</p>
       </div>
     </div>
   )

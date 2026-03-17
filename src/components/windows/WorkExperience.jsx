@@ -23,7 +23,7 @@ function WorkExperience() {
         <span>Market Associate</span>
         <span>Sep 2025 - Dec 2025</span>
         </h3>
-      <p><b>Commerce Mentorship Program, Sauder</b> </p>
+      <p><b>Blackball Vancouver</b> </p>
       <ul>
         <li>
           Increased daily sales by 25% and strengthened brand visibility by engaging 500+ visitors at pop-up 
