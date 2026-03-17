@@ -72,14 +72,14 @@ function App() {
       )}
 
       {openWindows.anime && (
-        <Window title=" " onClose={() => closeWindow('anime')}
+        <Window title="(^з^)" onClose={() => closeWindow('anime')}
         className="left-cornor-window">
           <Anime />
         </Window>
       )}
 
       {openWindows.artists && (
-        <Window title="Some Artists Mia Appreciates" onClose={() => closeWindow('artists')}>
+        <Window title="(･_･;" onClose={() => closeWindow('artists')}>
           <Artists />
         </Window>
       )}

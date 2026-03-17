@@ -289,20 +289,27 @@ body {
   text-align: center;
   margin-bottom: 10px;
 }
-.anime-photos-scroll {
-  overflow-x: auto;
+.artists-photos-scroll {
+  max-width: 100%; 
+  width: 700px; 
+  height: 160px;
+  overflow-x: scroll;
   overflow-y: hidden;
+
+  white-space: nowrap;
+
   border: 2px solid;
   border-color: #808080 #ffffff #ffffff #808080;
-  margin-bottom: 12px;
-  height: 200px;
-  white-space: nowrap;
-  width: 100%;
+
+  background: black;
 }
-.anime-photos-scroll img {
-  height: 200px;
+
+/* images */
+.artists-photos-scroll img {
+  height: 100%;
   width: auto;
-  max-width: none;
+
+  display: inline-block;    /* 🔥 critical */
 }
 /* artist */
 .artist-area {
@@ -326,27 +333,137 @@ body {
   border: none;
   cursor: pointer;
 }
+/* artists pop-up */
+
+.artists-window-content h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.artists-window-content h3 {
+  margin-left: 8px;
+  margin-top: 20px;
+}
+.artists-window-content ul {
+  list-style: none;
+
+}
+
+.artists-photos-scroll {
+  overflow-x: auto;     /* enables horizontal scroll */
+  overflow-y: hidden;
+
+  white-space: nowrap;  /* keeps images in one row */
+
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+
+  margin: 10px 0;
+  height: 160px;
+
+  background: black;
+}
+
+/* images inside */
+.artists-photos-scroll img {
+  height: 100%;
+  width: auto;
+
+  display: inline-block;  /* makes them line up horizontally */
+}
+
 
 /* movie frame */
 .movie-frame {
-  flex: 1;
+  position: absolute;
+  top: 10px;
+  right: 0px;
+
+  width: 900px;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  align-content: start;
-}
+  gap: 14px;
 
-.movie-card {
-  background: none;
-  border: 3px solid;
+  padding: 40px 12px 12px 12px;
+
+  background: #c0c0c0;
+
+  border: 2px solid;
   border-color: #ffffff #808080 #808080 #ffffff;
-  padding: 0;
-  cursor: pointer;
 }
 
+.movie-frame::before {
+  content: "(ｰ ｰ;)";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+
+  font-size: 14px;
+}
+
+.movie-frame::after {
+  content: "> _ <";
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 30px;
+  height: 18px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: black;
+  font-size: 14px;
+  text-align: center;
+  line-height: 18px;
+}
+
+/* ===== CARD (outer raised frame) ===== */
+.movie-card {
+  padding: 4px;
+  background: #c0c0c0;
+
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+
+  cursor: pointer;
+
+  outline: none;
+}
+
+/* INNER FRAME */
+.movie-inner {
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+
+  background: black;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* IMAGE */
 .movie-card img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
+}
+
+@media (max-width: 1100px) {
+  .profile-area {
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    left: 140px;
+  }
 }
