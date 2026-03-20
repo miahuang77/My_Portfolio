@@ -7,7 +7,7 @@ function MovieCard({ movieId, img, onClick }) {
       bottom: 6,
       left: 6,
       fontFamily: "'VT323', monospace",
-      fontSize: 13,
+      fontSize: 20,
       color: 'white',
       textShadow: '1px 1px 2px #000',
       pointerEvents: 'none',

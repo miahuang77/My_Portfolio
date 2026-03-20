@@ -34,37 +34,30 @@ function Desktop({
         <SidebarIcon img={awardsIcon} label='awards' onClick={onOpenAwards} />
       </div>
 
-      <div className="left-panel">
-
-      {/* profile in middle left */}
+      {/* profile top-left of content */}
       <div className="profile-area">
         <img src={profilePic} alt="Profile" className="profile-pic" />
         <button className="profile-overlay-btn" onClick={onOpenProfile} />
-        </div>
+      </div>
 
-        <div className="bottom-panels">
-
-      {/* Anime on left bottom */}
-      <div className="anime-area">
-        <img src={cat} className="cat-gif" />
-        <img src={animeImg} alt="Anime" className="anime-pic" />
-        <button className="anime-overlay-btn" onClick={onOpenAnime} />
-        </div>
-
-      {/* Artist on middle bottom*/}
-      <div className="artist-area">
-        <img src={cattwo} className="cattwo-gif" />
-        <img src={hammy} className="hammy-gif" />
-        <img src={dog} className="dog-gif" />
-        <img src={artistsImg} alt="Artists" className="artist-pic" />
-        <button className="artist-overlay-btn" onClick={onOpenArtists} />
-        </div>
-
-        </div>
-        </div>
-
-      {/* movie frames on the right */}
+      {/* movie frames top-right */}
       <MovieFrame onMovieClick={onMovieClick} />
+
+      {/* bottom row: anime left, artist right — spans full content width */}
+      <div className="bottom-panels">
+        <div className="anime-area">
+          <img src={cat} className="cat-gif" />
+          <img src={animeImg} alt="Anime" className="anime-pic" />
+          <button className="anime-overlay-btn" onClick={onOpenAnime} />
+        </div>
+        <div className="artist-area">
+          <img src={cattwo} className="cattwo-gif" />
+          <img src={hammy} className="hammy-gif" />
+          <img src={dog} className="dog-gif" />
+          <img src={artistsImg} alt="Artists" className="artist-pic" />
+          <button className="artist-overlay-btn" onClick={onOpenArtists} />
+        </div>
+      </div>
 
     </div>
   )

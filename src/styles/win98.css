@@ -18,18 +18,233 @@ body {
   margin: 0;
 }
 
-.desktop-layout {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  display: grid;
-  grid-template-columns: 120px 1fr 400px;
-}
-
+/* ===== ROOT DESKTOP ===== */
 .desktop {
   position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
+/* ===== MAIN GRID =====
+   Columns: sidebar | profile-area | movie-frame
+   Row 1:   sidebar | profile      | movie
+   Row 2:   sidebar | btm (spans cols 2-3)
+   Note: movie col uses minmax so desktop background shows on the right.
+*/
+.desktop-layout {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 120px minmax(0, 410px) minmax(0, 900px);
+  grid-template-rows: 1fr 220px;
+  grid-template-areas:
+    "sidebar profile movie"
+    "sidebar btm     btm";
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 20px 10px;
+}
+.sidebar-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  width: 80px;
+}
+.sidebar-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+.sidebar-icon span {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 2px #000;
+}
+.sidebar-icon:hover {
+  background: rgba(255,255,255,0.2);
+  border: 1px dotted white;
+}
+.clickable {
+  cursor: pointer;
+}
+.clickable:hover {
+  opacity: 0.85;
+}
+
+/* ===== PROFILE AREA (top-left of content) ===== */
+.profile-area {
+  grid-area: profile;
+  position: relative;        /* anchors the overlay button */
+  align-self: start;
+  width: 100%;
+  z-index: 10;
+}
+.profile-pic {
+  width: 100%;
+  display: block;
+}
+.profile-overlay-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  height: 60px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== MOVIE FRAME (top-right of content) ===== */
+.movie-frame {
+  grid-area: movie;
+  position: relative;
+  align-self: start;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 14px;
+  align-content: start;
+
+  padding: 40px 12px 12px 12px;
+
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.movie-frame::before {
+  content: "(ｰ ｰ;)";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-size: 14px;
+}
+.movie-frame::after {
+  content: "> _ <";
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 30px;
+  height: 18px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: black;
+  font-size: 14px;
+  text-align: center;
+  line-height: 18px;
+}
+
+/* ===== MOVIE CARD ===== */
+.movie-card {
+  padding: 4px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+  outline: none;
+}
+.movie-inner {
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  background: black;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== BOTTOM PANELS (spans both content columns) ===== */
+/* Sub-grid mirrors main columns so anime aligns under profile,
+   artist aligns under the movie frame. */
+.bottom-panels {
+  grid-area: btm;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  align-items: start;
+}
+
+/* ===== ANIME AREA ===== */
+.anime-area {
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  width: 250px;
+  z-index: 10;
+}
+.anime-pic {
+  width: 100%;
+  display: block;
+}
+.anime-overlay-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 85%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== ARTIST AREA ===== */
+.artist-area {
+  position: relative;        /* anchors cattwo/hammy/dog gifs */
+  grid-column: 2;            /* stay in right column even though anime-area is fixed */
+  align-self: start;
+  width: 100%;
+  max-width: 490px;
+  margin-left: 10px;
+}
+.artist-pic {
+  width: 100%;
+  display: block;
+}
+.artist-overlay-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 150px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== DECORATIVE GIFS ===== */
+/* cat sits above the anime image */
 .cat-gif {
   position: absolute;
   bottom: 100%;
@@ -38,7 +253,7 @@ body {
   height: auto;
   pointer-events: none;
 }
-
+/* cattwo/hammy/dog sit above the artist image */
 .cattwo-gif {
   position: absolute;
   bottom: calc(100% - 10px);
@@ -47,37 +262,37 @@ body {
   height: auto;
   pointer-events: none;
 }
-
 .hammy-gif {
   position: absolute;
   bottom: 100%;
-  left: 264px;
+  left: 50%;                  /* was hardcoded 264px */
   width: 80px;
   height: auto;
   pointer-events: none;
 }
-
-.seal-gif {
-  position: fixed;
-  bottom: 10px;
-  right: 920px;
-  width: 200px;
-  height: auto;
-  pointer-events: none;
-}
-
 .dog-gif {
   position: absolute;
   bottom: calc(100% - 10px);
-  left: 57px;
+  left: 10%;
   width: 150px;
   height: auto;
   pointer-events: none;
 }
+/* seal floats in the gap between anime and artist in the bottom row */
+.seal-gif {
+  position: fixed;
+  bottom: 10px;
+  left: 130px;
+  width: 200px;
+  height: auto;
+  pointer-events: none;
+  z-index: 5;
+  transform: translateZ(0);  /* force own compositing layer — fixes paused GIFs in some browsers */
+}
 
-/* Win98 popup window */
+/* ===== WIN98 POPUP WINDOWS ===== */
 .win98-window {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -98,20 +313,20 @@ body {
   background: linear-gradient(to right, #000080, #1084d0);
   color: white;
   padding: 4px 8px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 .win98-close-btn {
   position: relative;
   background: #c0c0c0;
   border: 1px solid;
   border-color: #ffffff #808080 #808080 #ffffff;
-
   width: 18px;
   height: 18px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 .win98-close-btn::before,
 .win98-close-btn::after {
@@ -120,7 +335,6 @@ body {
   width: 10px;
   height: 2px;
   background: black;
-
   top: 50%;
   left: 50%;
   transform-origin: center;
@@ -141,44 +355,31 @@ body {
   min-height: 0;
 }
 
-/* sidebar */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px 10px;
+/* ===== POPUP SIZE VARIANTS ===== */
+.large-window {
+  width: min(700px, 95vw);
+  height: min(700px, 90vh);
 }
-.sidebar-icon:hover {
-  background: rgba(255,255,255,0.2);
-  border: 1px dotted white;
+.second-large-window {
+  width: min(800px, 95vw);
+  height: min(570px, 90vh);
 }
-.clickable {
-  cursor: pointer;
+.third-large-window {
+  width: min(700px, 95vw);
+  height: min(500px, 90vh);
 }
-.clickable:hover {
-  opacity: 0.85;
-}
-.sidebar-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  width: 80px;
-}
-.sidebar-icon img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-}
-.sidebar-icon span {
-  font-size: 13px;
-  color: white;
-  text-align: center;
-  text-shadow: 1px 1px 2px #000;
+/* anime popup — pinned bottom-left */
+.left-cornor-window {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  top: auto;
+  transform: none;
+  width: min(450px, 95vw);
+  height: min(320px, 90vh);
 }
 
-/* awards pop-up*/
+/* ===== AWARDS POPUP ===== */
 .awards-content h2 {
   text-align: center;
   margin-bottom: 5px;
@@ -187,11 +388,7 @@ body {
   margin-bottom: 10px;
 }
 
-/*projects pop-up*/
-.second-large-window {
-  width: 800px;
-  height: 570px;
-}
+/* ===== PROJECTS POPUP ===== */
 .job-line {
   display: flex;
   justify-content: space-between;
@@ -214,13 +411,8 @@ body {
   margin-left: 20px;
   margin-bottom: 10px;
 }
-/* work experience pop-up */
-.third-large-window {
-  width: 700px;
-  height: 500px;
-  max-height: 90vh;
-  max-width: 95vw;
-}
+
+/* ===== WORK EXPERIENCE POPUP ===== */
 .work-window-content h2 {
   font-size: 35px;
   text-align: center;
@@ -236,47 +428,17 @@ body {
   margin-bottom: 5px;
 }
 .work-window-content p {
-  font-size:20px;
+  font-size: 20px;
   margin-left: 8px;
   margin-bottom: 10px;
 }
 
-/* profile*/
-.profile-area {
-  position: relative;
-  width: 400px;
-  flex-shrink: 0;
-  margin-left: 10px;
-  display: inline-block;
-  align-self: start;
-  z-index: 10;
-}
-.profile-pic {
-  width: 100%;
-  display: block;
-}
-.profile-overlay-btn {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 60%;
-  height: 60px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-/* profile popup */
-.large-window {
-  width: 700px;
-  height: 700px;
-}
+/* ===== PROFILE POPUP ===== */
 .profile-window-content {
   padding: 3px;
   font-family: 'VT323', monospace;
   width: 100%;
 }
-
 .profile-window-content h2 {
   font-size: 35px;
   text-align: center;
@@ -285,7 +447,6 @@ body {
 .profile-window-content p {
   font-size: 20px;
 }
-
 .profile-photos-scroll {
   overflow-x: auto;
   overflow-y: hidden;
@@ -296,54 +457,21 @@ body {
   white-space: nowrap;
   width: 100%;
 }
-
 .profile-photos-scroll img {
   height: 100%;
   width: auto;
   display: inline-block;
 }
-
 .profile-text-scroll {
   overflow-y: auto;
   height: 300px;
-  border: 0px solid;
   background: white;
   padding: 8px;
   font-size: 16px;
   line-height: 1.2;
 }
 
-/* anime */
-.anime-area {
-  position: absolute;
-  left: 20px;
-  bottom: 00px;
-  width: 250px;
-}
-.anime-pic {
-  width: 100%;
-  display: block;
-}
- .anime-overlay-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 220px; 
-  height: 220px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-/*anime pop-up*/
-.left-cornor-window {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  width: 450px;
-  height: 320px;
-  transform: none;
-}
+/* ===== ANIME POPUP ===== */
 .anime-window-content h2 {
   font-size: 26px;
   text-align: center;
@@ -358,38 +486,13 @@ body {
   border-color: #808080 #ffffff #ffffff #808080;
   background: none;
 }
-
-/* image */
 .anime-photos-scroll img {
-  height: 100%;           /* fill container height */
-  width: auto;            /* keep original aspect ratio */
-
+  height: 100%;
+  width: auto;
   display: block;
 }
 
-/* artist */
-.artist-area {
-  position: absolute;
-  left: 530px;
-  bottom: 5px;
-  width: 500px;
-}
-.artist-pic {
-  width: 100%;
-  display: block;
-}
-.artist-overlay-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 450px; 
-  height: 150px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-/* artists pop-up */
+/* ===== ARTISTS POPUP ===== */
 .artists-window-content h2 {
   font-size: 35px;
   text-align: center;
@@ -404,17 +507,6 @@ body {
   font-size: 20px;
 }
 .artists-photos-scroll {
-  max-width: 100%; 
-  width: 700px; 
-  height: 160px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  border: 2px solid;
-  border-color: #808080 #ffffff #ffffff #808080;
-  background: black;
-}
-.artists-photos-scroll {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
@@ -424,141 +516,61 @@ body {
   height: 160px;
   background: black;
 }
-/* images */
 .artists-photos-scroll img {
   height: 100%;
   width: auto;
-
   display: inline-block;
 }
 
-/* movie frame */
-.movie-frame {
-  position: absolute;
-  top: 10px;
-  right: 0px;
-
-  width: 900px;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-
-  padding: 40px 12px 12px 12px;
-
-  background: #c0c0c0;
-
-  border: 2px solid;
-  border-color: #ffffff #808080 #808080 #ffffff;
-}
-
-.movie-frame::before {
-  content: "(ｰ ｰ;)";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 28px;
-
-  background: linear-gradient(to right, #000080, #1084d0);
-  color: white;
-
-  display: flex;
-  align-items: center;
-  padding-left: 8px;
-
-  font-size: 14px;
-}
-
-.movie-frame::after {
-  content: "> _ <";
-  position: absolute;
-  top: 5px;
-  right: 6px;
-  width: 30px;
-  height: 18px;
-  background: #c0c0c0;
-  border: 1px solid;
-  border-color: #ffffff #808080 #808080 #ffffff;
-  color: black;
-  font-size: 14px;
-  text-align: center;
-  line-height: 18px;
-}
-
-/* ===== CARD (outer raised frame) ===== */
-.movie-card {
-  padding: 4px;
-  background: #c0c0c0;
-
-  border: 2px solid;
-  border-color: #ffffff #808080 #808080 #ffffff;
-
-  cursor: pointer;
-
-  outline: none;
-}
-
-/* INNER FRAME */
-.movie-inner {
-  border: 2px solid;
-  border-color: #808080 #ffffff #ffffff #808080;
-
-  background: black;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* IMAGE */
-.movie-card img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-}
-
-/* movie pop-up*/
-.movie-window-content h2 {
-  font-size: 35px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-.movie-window-content p {
-  font-size: 20px;
-}
-.movie-window-content h3 {
-  font-size: 28px;
-  text-align: left;
-  margin-bottom: 0px;
-}
-
+/* ===== MOVIE POPUPS ===== */
+.movie-window-content h2,
 .moviefour-window-content h2 {
   font-size: 35px;
   text-align: center;
   margin-bottom: 10px;
 }
+.movie-window-content p,
 .moviefour-window-content p {
   font-size: 20px;
 }
+.movie-window-content h3,
 .moviefour-window-content h3 {
   font-size: 28px;
   text-align: left;
   margin-bottom: 0px;
 }
 
-  @media (max-width: 1100px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .desktop-layout {
+    grid-template-columns: 100px minmax(0, 320px) minmax(0, 700px);
+  }
+  .bottom-panels {
+    grid-template-columns: minmax(0, 320px) minmax(0, 500px);
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-layout {
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "sidebar profile"
+      "sidebar movie"
+      "sidebar btm";
+    overflow-y: auto;
+  }
+  .bottom-panels {
+    grid-template-columns: 160px 1fr;
+  }
   .movie-frame {
-    z-index: 100;   /* 👈 lower than popups */
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
   }
-
-  .profile-area {
-    z-index: 200;   /* 👈 above movie-frame, below popups */
+  .anime-area {
+    width: 160px;
   }
-
-  .win98-window {
-    position: fixed;
-    z-index: 999;   /* 👈 always on top */
+  .seal-gif {
+    display: none;
   }
 }

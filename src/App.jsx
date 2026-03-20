@@ -82,7 +82,7 @@ function App() {
       )}
 
       {openWindows.artists && (
-        <Window title="(･_･;" onClose={() => closeWindow('artists')}>
+        <Window title="(･_･;" onClose={() => closeWindow('artists')} className="large-window">
           <Artists />
         </Window>
       )}
