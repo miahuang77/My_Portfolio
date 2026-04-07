@@ -38,7 +38,7 @@ function MoviePopup({ movieId }) {
         <div className='moviefour-window-content'>
         <h2>Mia's Project Gallary</h2>
         <h3>PantryChef</h3>
-                <a href="https://github.com/miahuang77/PantryChef" target="_blank" rel="noreferrer">
+                <a href="https://github.com/Jacky1366/-PantryChef-AI" target="_blank" rel="noreferrer">
           GitHub
         </a>
         <p>
@@ -47,7 +47,7 @@ function MoviePopup({ movieId }) {
         <br></br>
 
         <h3>FocusAurus</h3>
-                <a href="https://github.com/miahuang77/FocusAurus" target="_blank" rel="noreferrer">
+                <a href="https://github.com/shrsin3/cmd-f2026" target="_blank" rel="noreferrer">
           GitHub
         </a>
         <p>
